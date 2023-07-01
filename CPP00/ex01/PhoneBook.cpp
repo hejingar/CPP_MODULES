@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:20:44 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/04/28 16:55:22 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:55:52 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ PhoneBook::~PhoneBook()
 void	PhoneBook::menu(void) const
 {
 	std::cout << std::endl;
-	std::cout << "Let's make an awesome PhoneBook" << std::endl;
-	std::cout << "You can use the following commands:" << std::endl;
+	std::cout << "Use the following commands:" << std::endl;
 	std::cout << "|==========================================|" << std::endl;
 	std::cout << "|ADD:    to add a new contact              |" << std::endl;
 	std::cout << "|SEARCH: to search for a contact           |" << std::endl;
@@ -37,6 +36,8 @@ void	PhoneBook::add_contact(void)
 {
 	static int	i;
 	this->_contacts[i % 8].init();
+	if (std::cin.eof())
+		exit(0);
 	this->_contacts[i % 8].set_index(i % 8);
 	i++;
 }
@@ -60,7 +61,12 @@ int		PhoneBook::_read_input(void) const
 	{
 		std::cout << "Enter the contact index	" << std::endl << std::flush;
 		std::cin >> input;
-		if (std::cin.fail())
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl D detected, exiting..." << std::endl;
+			exit(0);
+		}
+		else if (std::cin.fail())
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

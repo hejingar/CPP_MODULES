@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:20:39 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/04/28 16:58:45 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:25:30 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #endif
 
 #include <iostream>
+#include <stdlib.h>
 #include <limits>
 #include <string>
 #include <cstring>

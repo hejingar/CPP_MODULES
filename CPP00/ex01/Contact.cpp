@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:20:35 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/04/28 17:16:45 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:55:35 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,19 @@ std::string	Contact::_get_input(std::string str) const
 		std::cout << str << std::flush;
 		std::cin >> input;
 		if(std::cin.good() && !input.empty())
+		{
 			is_valid = true;
+			break;
+		}
+		else if (std::cin.eof())
+		{
+			std::cout << "Ctrl-D detected, exiting..." << std::endl;
+			return("");
+		}
 		else
 		{
 			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Invalid or Empty input, try again" << std::endl;
 		}
 	} while (!is_valid);
@@ -53,6 +62,11 @@ std::string	Contact::_get_input_number(std::string str) const
 		std::cin >> input;
 		if(std::cin.good() && !input.empty() && strspn(input.c_str(), "0123456789") == 10)
 			is_valid = true;
+		else if (std::cin.eof())
+		{
+			std::cout << "Ctrl-D detected, exiting..." << std::endl;
+			return("");
+		}
 		else
 		{
 			std::cin.clear();
@@ -66,9 +80,17 @@ void	Contact::init(void)
 {
 	std::cin.ignore();
 	this->set_first_name(_get_input("Enter your first name: "));
+	if (std::cin.eof())
+		return;
 	this->set_last_name(_get_input("Enter your last name: "));
+	if (std::cin.eof())
+		return;
 	this->set_nickname(_get_input("Enter your nickname: "));
+	if (std::cin.eof())
+		return;
 	this->set_phone_number(_get_input_number("Enter your phone number: "));
+	if (std::cin.eof())
+		return;
 	this->set_darkest_secret(_get_input("Enter your darkest secret: "));
 	std::cout << std::endl;
 }
