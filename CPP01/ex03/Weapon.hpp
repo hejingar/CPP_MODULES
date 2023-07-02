@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 22:48:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/02 16:45:52 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/02 16:57:43 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/02 18:24:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-Zombie*	newZombie(std::string name)
+
+#include <iostream>
+
+class Weapon
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
-}
+	private:
+		std::string _type;
+	
+	public:
+		Weapon(std::string type);
+		~Weapon();
+		
+		const std::string&	getType(void);
+		void				setType(std::string type);
+};
+#endif

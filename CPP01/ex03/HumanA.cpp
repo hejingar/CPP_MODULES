@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 22:48:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/02 16:45:52 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/02 17:02:52 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/02 19:30:32 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-Zombie*	newZombie(std::string name)
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
+	/* this->_name = name;
+	this->_weapon = weapon; */
+}
+
+HumanA::~HumanA(void)
+{
+	std::cout << "HumanA destroyed" << std::endl;
+}
+
+void	HumanA::attack(void)
+{
+	std::cout << this->_name << " attacks with their " << this->_weapon.getType() <<std::endl;	
 }

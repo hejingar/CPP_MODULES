@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 22:48:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/02 16:45:52 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/02 21:00:59 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/02 22:25:44 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef REPLACER_HPP
+# define REPLACER_HPP
 
-Zombie*	newZombie(std::string name)
+#include <iostream>
+#include <fstream>
+#include <string>
+
+class Replacer
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
-}
+	private:
+		std::ifstream	_origin_file;
+		std::ofstream	_replaced_file;
+		std::string		_s1;
+		std::string		_s2;
+		
+	public:
+		Replacer(std::string filename, std::string s1, std::string s2);
+		~Replacer();
+
+		void	readAndReplace(void);
+		
+};
+
+#endif

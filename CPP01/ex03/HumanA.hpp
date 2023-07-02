@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 22:48:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/02 16:45:52 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/02 17:03:07 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/02 19:30:24 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-Zombie*	newZombie(std::string name)
+
+#include <iostream>
+#include "Weapon.hpp"
+
+class HumanA
 {
-	Zombie* zombie = new Zombie(name);
-	return (zombie);
-}
+	private:
+		std::string	_name;
+		Weapon&	_weapon;
+
+
+	public:
+		HumanA(std::string name, Weapon& weapon);
+		~HumanA();
+
+		void	attack(void);
+		
+};
+#endif
