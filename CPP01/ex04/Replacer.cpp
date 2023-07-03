@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:00:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 00:38:37 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/03 00:42:23 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	Replacer::readAndReplace(void)
 		}
 	}
 	else
-		std::cout << "Error: Files not open" << std::endl;	
+		std::cout << "Error: Files not open or does not exist" << std::endl;	
 }
