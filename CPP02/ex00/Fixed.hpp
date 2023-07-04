@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:25:30 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 14:35:36 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:38:59 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Fixed
 		Fixed& operator= (const Fixed& fixed);
 		~Fixed();
 
-		int	getRawBits( void ) const;
-		int	setRawBits( void );
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 
 };
 
