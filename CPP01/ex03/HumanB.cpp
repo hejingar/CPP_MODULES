@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:18:39 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/02 20:50:08 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:27:06 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ HumanB::HumanB(std::string name) : _name(name)
 
 HumanB::~HumanB(void)
 {
-	std::cout << "HumanB destroyed" << std::endl;
+	std::cout << "HumanB :" << this->_name << " destroyed" << std::endl;
 }
 
 void	HumanB::attack(void)

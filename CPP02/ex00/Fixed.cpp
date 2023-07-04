@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 17:02:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 13:26:56 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/03 14:34:54 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/03 14:39:55 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "Fixed.hpp"
 
-HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
+Fixed::Fixed( void )
 {
+	this->_value = 0;
 }
 
-HumanA::~HumanA(void)
+Fixed::~Fixed( void )
 {
-	std::cout << "HumanA " << this->_name << " destroyed" << std::endl;
+	std::cout << "Destroyed" << std::endl;
 }
 
-void	HumanA::attack(void)
+Fixed& Fixed::operator= (const Fixed& fraction)
 {
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() <<std::endl;	
+
+}
+Fixed::Fixed(Fixed& fixed)
+{
+	this->_value = fixed._value;
 }

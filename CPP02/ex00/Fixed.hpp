@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 17:02:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 13:26:56 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/07/03 14:25:30 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/07/03 14:35:36 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
-{
-}
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-HumanA::~HumanA(void)
-{
-	std::cout << "HumanA " << this->_name << " destroyed" << std::endl;
-}
+#include <iostream>
 
-void	HumanA::attack(void)
+class Fixed
 {
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() <<std::endl;	
-}
+	private:
+		int	_value;
+		const static int fractBits = 8;
+	public:
+		Fixed();
+		Fixed(Fixed& fixed);
+		Fixed& operator= (const Fixed& fixed);
+		~Fixed();
+
+		int	getRawBits( void ) const;
+		int	setRawBits( void );
+
+};
+
+#endif

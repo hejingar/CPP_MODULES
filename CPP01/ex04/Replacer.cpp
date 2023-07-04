@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:00:50 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 00:42:23 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:29:42 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ Replacer::Replacer(std::string filename, std::string s1, std::string s2)
 	this->_s1 = s1;
 	this->_s2 = s2;
 	_origin_file.open(filename.c_str());
-	_replaced_file.open(replace.c_str());
+	if ( _origin_file.is_open())
+		_replaced_file.open(replace.c_str());
 }
 
 Replacer::~Replacer()
