@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:47:11 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/04 18:36:07 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:17:48 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,20 @@ Fixed::Fixed( void )
 	this->_value = 0;
 }
 
-Fixed::Fixed( const int value ) : _value(value << this->fractBits)
+Fixed::Fixed(const Fixed& fixed) : _value(fixed._value)
 {
-
+	std::cout << "Copy constructor called" << std::endl;
+	*this = fixed;
 }
 
-Fixed::Fixed( const float value ) : _value(value * (1 << this->fractBits))
+Fixed::Fixed( const int value ) : _value(value << this->fractBits)
 {
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed( const float value ) : _value(roundf(value * (1 << this->fractBits)))
+{
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed( void )
@@ -38,13 +45,6 @@ Fixed& Fixed::operator= (const Fixed& fraction)
 	if (this != &fraction)
 		this->_value = fraction.getRawBits();
 	return (*this);
-}
-
-Fixed::Fixed(Fixed& fixed) : _value(fixed._value)
-{
-	//this->setRawBits(fixed.getRawBits());
-	std::cout << "Copy constructor called" << std::endl;
-	*this = fixed;
 }
 
 float	Fixed::toFloat( void ) const
@@ -63,7 +63,7 @@ void	Fixed::setRawBits(int const raw)
 
 int		Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
