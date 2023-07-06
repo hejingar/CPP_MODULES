@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:51:37 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/05 16:43:35 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:24:59 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		std::cout << "Not enough arguments, quitting..." << std::endl;
 	else
 	{
-		if (av[2][0] == 0)
+		if (av[2][0] == 0 || av[3][0] == 0)
 		{
 			std::cout << "Cant search for empty strings" << std::endl;
 			return (0);
