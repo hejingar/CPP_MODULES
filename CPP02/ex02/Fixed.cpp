@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:22:10 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/10 18:54:20 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:26:51 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,11 @@ Fixed	Fixed::operator*( const Fixed &fixed ) const
 
 Fixed	Fixed::operator/( const Fixed &fixed ) const
 {
+	if (fixed.toFloat() == 0)
+	{
+		std::cout << "Division by zero man, don't do that" << std::endl;
+		return (Fixed(0));
+	}
 	return (Fixed( this->toFloat() / fixed.toFloat()));
 }
 
@@ -157,7 +162,7 @@ Fixed	Fixed::operator--( int )
 }
 
 //===============Minamax=====================
-static Fixed&		min( Fixed& a, Fixed& b )
+Fixed&		Fixed::min( Fixed& a, Fixed& b )
 {
 	if (b.getRawBits() > a.getRawBits())
 		return (b);
@@ -165,7 +170,7 @@ static Fixed&		min( Fixed& a, Fixed& b )
 		return (a);
 }
 
-static const Fixed&	min( const Fixed& a, const Fixed& b )
+const Fixed&	Fixed::min( const Fixed& a, const Fixed& b )
 {
 	if (a.getRawBits() > b.getRawBits())
 		return (b);
@@ -173,7 +178,7 @@ static const Fixed&	min( const Fixed& a, const Fixed& b )
 		return (a);
 }
 
-static Fixed&		max( Fixed& a, Fixed& b)
+Fixed&		Fixed::max( Fixed& a, Fixed& b)
 {
 	if (a.getRawBits() < b.getRawBits())
 		return (b);
@@ -181,7 +186,7 @@ static Fixed&		max( Fixed& a, Fixed& b)
 		return (b);
 }
 
-static const Fixed&	max( const Fixed& a, const Fixed& b)
+const Fixed&	Fixed::max( const Fixed& a, const Fixed& b)
 {
 	if (a.getRawBits() < b.getRawBits())
 		return (b);
