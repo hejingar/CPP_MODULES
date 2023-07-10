@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:22:10 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/10 13:47:17 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:54:20 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 Fixed::Fixed( void )
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 	this->_value = 0;
 }
 
 Fixed::Fixed(const Fixed& fixed) : _value(fixed._value)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = fixed;
 }
 
 Fixed::Fixed( const int value ) : _value(value << this->fractBits)
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed( const float value ) : _value(roundf(value * (1 << this->fractBits)))
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed( void )
 {
-	std::cout << "Destroyed" << std::endl;
+	//std::cout << "Destroyed" << std::endl;
 }
 
 Fixed& Fixed::operator= (const Fixed& fraction)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &fraction)
 		this->_value = fraction.getRawBits();
 	return (*this);
@@ -110,22 +110,50 @@ bool	Fixed::operator!=( const Fixed &fixed ) const
 //===============Mathimatics=================
 Fixed	Fixed::operator+( const Fixed &fixed ) const
 {
-
+	return (Fixed( this->toFloat() + fixed.toFloat()));
 }
 
 Fixed	Fixed::operator-( const Fixed &fixed ) const
 {
-
+	return (Fixed( this->toFloat() - fixed.toFloat()));
 }
 
 Fixed	Fixed::operator*( const Fixed &fixed ) const
 {
-
+	return (Fixed( this->toFloat() * fixed.toFloat()));
 }
 
 Fixed	Fixed::operator/( const Fixed &fixed ) const
 {
+	return (Fixed( this->toFloat() / fixed.toFloat()));
+}
 
+//===============Incremont===================
+
+Fixed&	Fixed::operator++( void )
+{
+	this->setRawBits(this->getRawBits() + 1);
+	return(*this);
+}
+
+Fixed	Fixed::operator++( int )
+{
+	Fixed fixed = *this;
+	++*this;
+	return (fixed);
+}
+
+Fixed&	Fixed::operator--( void )
+{
+	this->setRawBits(this->getRawBits() + 1);
+	return(*this);
+}
+
+Fixed	Fixed::operator--( int )
+{
+	Fixed fixed = *this;
+	--*this;
+	return (fixed);
 }
 
 //===============Minamax=====================
