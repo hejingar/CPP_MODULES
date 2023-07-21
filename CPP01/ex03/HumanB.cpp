@@ -6,13 +6,13 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:18:39 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/03 13:27:06 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:57:42 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
 {
 }
 
