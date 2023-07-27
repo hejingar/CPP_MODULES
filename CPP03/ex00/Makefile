@@ -6,7 +6,7 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 19:48:06 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/10 19:48:15 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/07/25 14:44:46 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= clap
 SRC		= main.cpp ClapTrap.cpp
 OBJS 	= $(SRC:.c=.o)
 
-CC		= clang++
+CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 

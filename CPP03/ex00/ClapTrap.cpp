@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:37:02 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/10 19:58:15 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:54:13 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void 	ClapTrap::attack(const std::string& target)
 		this->_energyPoints -= 1;
 	}
 }
+
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints > 0)
@@ -62,7 +63,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints -= amount;
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
+		if (amount > 10)
+			this->_hitPoints = 0;
 		std::cout << this->_name << " now has " << this->_hitPoints << " hit points" << std::endl;
+	}
+	else
+	{
+		std::cout << this->_name << " is already dead" << std::endl;
 	}
 }
 
