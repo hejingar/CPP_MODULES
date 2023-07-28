@@ -6,17 +6,17 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 14:44:04 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/25 18:04:12 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/07/25 17:42:21 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= clap
 
-SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 GREEN	= \033[32m

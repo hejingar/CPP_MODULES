@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/25 14:44:04 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/25 18:04:12 by ael-youb         ###   ########.fr        #
+#    Created: 2023/07/27 17:04:10 by ael-youb          #+#    #+#              #
+#    Updated: 2023/07/28 13:40:15 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= clap
+NAME	= animale
 
-SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 GREEN	= \033[32m
