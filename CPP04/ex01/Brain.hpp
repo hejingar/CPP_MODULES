@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:45:06 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/28 13:49:07 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:09:56 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BRAIN_HPP
 
 #include <string>
+#include <iostream>
 
 class Brain
 {

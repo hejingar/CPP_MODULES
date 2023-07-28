@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 13:45:03 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/28 13:59:24 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:27:59 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Brain& Brain::operator=(const Brain& rhs)
 	if (this != &rhs)
 	{
 		for (int i = 0; i < 100; i++)
-			this->ideas[i] == rhs.ideas[i];
+			this->ideas[i] = rhs.ideas[i];
 	}
 	return (*this);
 }
@@ -43,9 +43,9 @@ Brain::~Brain()
 
 std::string Brain::getIdea(int index)
 {
-	if (index > 100 || index < 0)
+	if (index > 99 || index < 0)
 	{
-		std::cout << "Ideas are limited to 0-100" << std::endl;
+		std::cout << "Ideas are limited to 0-99" << std::endl;
 		return ("");
 	}
 	else
@@ -61,7 +61,7 @@ void		Brain::setIdea(std::string idea)
 			this->ideas[i] = idea;
 			break ;
 		}
-	}
-	if (i == 100)
+		if (i == 99)
 		std::cout << "Brain is full, can't add ideas" << std::endl;
+	}
 }

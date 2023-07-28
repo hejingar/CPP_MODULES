@@ -6,13 +6,13 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 17:04:10 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/28 13:40:15 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/07/28 17:13:44 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= animale
 
-SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
