@@ -6,11 +6,11 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:04:24 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/28 18:07:56 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/28 18:08:02 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -19,8 +19,8 @@
 int main()
 {
 	{
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
 		const Cat* cat = new Cat();
 		std::cout << j->getType() << " " << std::endl;
 		std::cout << i->getType() << " " << std::endl;
@@ -34,22 +34,6 @@ int main()
 		delete j;
 		delete i;
 		delete cat;
-	}
-
-	std::cout << std::endl << std::endl;
-	{
-		const Animal* anim[100];
-		for (int i = 0; i < 100; i++)
-		{
-			if (i < 50)
-				anim[i] = new Dog();
-			else
-				anim[i] = new Cat();
-		}
-		for (int i = 0; i < 100; i++)
-		{
-			delete anim[i];
-		}
 	}
 	return 0;
 }
