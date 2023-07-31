@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:04:24 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/28 13:43:04 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:15:51 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int main()
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
+		delete meta;
+		delete j;
+		delete i;
 	}
 	{
 		const WrongAnimal* meta = new WrongAnimal();
@@ -34,6 +37,8 @@ int main()
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //will output weird noise
 		meta->makeSound();
+		delete meta;
+		delete i;
 	}
 
 	return 0;
