@@ -5,18 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/27 17:04:10 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/31 13:52:07 by ael-youb         ###   ########.fr        #
+#    Created: 2023/08/14 14:31:40 by ael-youb          #+#    #+#              #
+#    Updated: 2023/08/14 14:38:17 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= animale
 
-SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+NAME	= bureau
+
+SRC		= main.cpp Bureaucrat.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
 GREEN	= \033[32m

@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:04:24 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/07/28 18:07:56 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:56:09 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,18 @@ int main()
 		cat->getBrain()->setIdea("Bright idea");
 		std::cout << "Cat has this idea " << cat->getBrain()->getIdea(0) << std::endl;
 		std::cout << "Now we test the deep copy to see if the new cat Brain has the same as the old one" << std::endl;
-		const Cat* cot = cat;
+		const Cat* cot = new Cat(*cat);
+		Cat karim(*cat);
+		std::cout << "===========================" << std::endl;
+		Cat ali;
+		ali = karim;
+		std::cout << "===========================" << std::endl;
+
 		std::cout << "Now cot has this idea " << cot->getBrain()->getIdea(0) << std::endl;
 		delete j;
 		delete i;
 		delete cat;
+		delete cot;
 	}
 
 	std::cout << std::endl << std::endl;
