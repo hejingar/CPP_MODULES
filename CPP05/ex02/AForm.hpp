@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:19:58 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 18:00:56 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 18:47:04 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ class AForm
 			virtual const char* what() const throw()
 			{
 				return "Grade too low!";
+			}
+	};
+	
+	class NotSignedException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{
+				return "Form is not signed!";
 			}
 	};
 };
