@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:19:58 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 18:47:04 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:32:27 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ class AForm
 	};
 };
 
-std::ostream& operator<<(std::ostream& o, Form& form);
+std::ostream& operator<<(std::ostream& o, AForm& form);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:57:16 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 18:38:56 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:39:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-
-class Bureaucrat;
+#include <cstdlib>
 
 class RobotomyRequestForm : public AForm
 {

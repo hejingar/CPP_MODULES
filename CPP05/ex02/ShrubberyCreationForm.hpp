@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:57:11 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 18:50:04 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:32:16 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <fstream>
-
-class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm
 {
