@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:32:03 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/14 15:09:50 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 17:25:42 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,22 @@ void		Bureaucrat::decrementGrade()
 	if (_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	_grade += 1;
+}
+
+void		Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->getName() << " couldn't sign " << form.getName() << " because " 
+		<< e.what() << std::endl;
+	}
+	
+		
 }
 
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& lui)

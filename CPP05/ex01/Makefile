@@ -6,14 +6,14 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 14:31:40 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/14 14:38:17 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/08/18 17:27:48 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= bureau
 
-SRC		= main.cpp Bureaucrat.cpp
+SRC		= main.cpp Bureaucrat.cpp Form.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
