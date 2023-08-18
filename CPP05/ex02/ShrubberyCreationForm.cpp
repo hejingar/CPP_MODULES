@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:57:14 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 19:42:06 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:56:26 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 
 	std::string l = this->_target + "_shrubbery";
 	const char* p = l.c_str();
-	std::ofstream file(p);
+	std::ofstream file(p, std::ios_base::app);
 	file << "                                                         ." << std::endl;
 	file << "                                              .         ;  " << std::endl;
 	file << "                 .              .              ;%     ;;   " << std::endl;

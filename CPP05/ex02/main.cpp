@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:31:37 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 19:42:41 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:56:34 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(void)
 	std::cout << form;
 	
 	bur->signForm(form);
+	bur->executeForm(form);
+	bur->executeForm(form);
 	bur->executeForm(form);
 
 	RobotomyRequestForm dead("ael-youb");
