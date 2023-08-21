@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:19:58 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 19:32:27 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:24:36 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class AForm
 		AForm(const std::string& name, int gradeSign, int gradeExecute);
 		AForm(const AForm& rhs);
 		AForm& operator=(const AForm& rhs);
-		~AForm();
+		virtual ~AForm();
 
 		const std::string&	getName() const;
 		bool				getIsSigned() const;

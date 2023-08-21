@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:31:37 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 19:56:34 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:41:41 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 
 int main(void)
@@ -23,33 +24,62 @@ int main(void)
     try
     {
         Bureaucrat* bur = new Bureaucrat("Sophie Vigier", 1);
-	    ShrubberyCreationForm form("42Paris");
-	
-	    std::cout << *bur;
-        std::cout << form;
-        
-        bur->signForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
+	    Intern* pipo = new Intern();
 
-        RobotomyRequestForm dead("ael-youb");
-        std::cout << dead;
+		AForm* form = pipo->makeForm("shrubbery creation", "42Paris");
+		if (!form)
+		{
+			std::cout << "Error creating form, abort" << std::endl;
+			delete bur;
+			delete pipo;
+			return (1);
+		}
+	    std::cout << *bur;
+        std::cout << *form;
         
-        bur->signForm(dead);
-        bur->executeForm(dead);
+        bur->signForm(*form);
+        bur->executeForm(*form);
+        bur->executeForm(*form);
+        bur->executeForm(*form);
+
+        AForm* dead = pipo->makeForm("robotomy request", "ael-youb");
+		if (!dead)
+		{
+			std::cout << "Error creating form, abort" << std::endl;
+			delete bur;
+			delete pipo;
+			delete form;
+			return (1);
+		}
+        std::cout << *dead;
+
+        bur->signForm(*dead);
+        bur->executeForm(*dead);
         
-        PresidentialPardonForm mercy("ael-youb");
-        std::cout << mercy;
-        bur->signForm(mercy);
-        bur->executeForm(mercy);
+        AForm* mercy = pipo->makeForm("presidential pardon", "ael-youb");
+		if (!mercy)
+		{
+			std::cout << "Error creating form, abort" << std::endl;
+			delete bur;
+			delete pipo;
+			delete form;
+			delete dead;
+			return (1);
+		}
+        std::cout << *mercy;
+        bur->signForm(*mercy);
+        bur->executeForm(*mercy);
         delete bur;
+		delete pipo;
+		delete form;
+		delete dead;
+		delete mercy;
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "\n-------------------USELESS INTERN-------------------------" << std::endl;
+    std::cout << "\n-------------------LIL MAN-------------------------" << std::endl;
     try
     {
         Bureaucrat* bur = new Bureaucrat("Useless Intern", 150);

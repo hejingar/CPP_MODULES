@@ -6,14 +6,16 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 14:31:40 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/18 19:25:41 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/08/21 17:12:43 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= bureau
 
-SRC		= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+SRC		= main.cpp Bureaucrat.cpp AForm.cpp \
+			PresidentialPardonForm.cpp ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp Intern.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
