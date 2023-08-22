@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:45:56 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 13:25:34 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/22 13:59:11 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,36 @@ void	Convert::convert(std::string& toCast)
 		return ;
 	}
 	
-	toInt = std::atoi()
+	toInt = std::atoi(toCast.c_str());
+	if (toCast[toCast.length() - 1] == 'f')
+	{
+		toFloat = std::atof(toCast.c_str());
+		toDouble = static_cast<double>(toFloat);
+	}
+	else
+	{
+		toDouble = std::atof(toCast.c_str());
+		toFloat = static_cast<float>(toDouble);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (toCast == special[i])
+		{
+			toChar = "impossible";
+			break ;
+		}
+	}
+	
+	if (toChar == "" && std::isprint(toInt))
+	{
+		toChar = "'";
+		toChar += static_cast<char>(toInt);
+		toChar += "'";
+	}
+	else if (toChar == "")
+	{
+		toChar = "Non displayable";
+	}
 	
 }
