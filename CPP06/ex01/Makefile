@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 12:08:54 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/22 22:51:53 by ael-youb         ###   ########.fr        #
+#    Created: 2023/08/22 22:16:24 by ael-youb          #+#    #+#              #
+#    Updated: 2023/08/22 22:47:35 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= scalar
+NAME	= serializer
 
-SRC		= main.cpp ScalarConverter.cpp
+SRC		= main.cpp Serializer.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

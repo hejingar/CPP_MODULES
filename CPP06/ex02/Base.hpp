@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 12:08:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 22:51:25 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/08/22 22:54:45 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/08/22 23:48:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+#include <cstdlib>
+
+class Base
 {
-	if (ac != 2)
-	{
-		std::cout << "Use ./scalar \"toConvert\" " << std::endl;
-		return (0);
-	}
-	std::string s(av[1]);
-	ScalarConverter::convert(s);
-}
+  public:
+    virtual ~Base();  
+};
+#endif
+
+Base*   generate(void);
+void    identify(Base* p);
+void    identify(Base& p);
+
+Base*   aCreator();
+Base*   bCreator();
+Base*   cCreator();

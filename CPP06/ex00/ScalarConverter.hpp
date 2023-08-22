@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 12:08:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 22:51:25 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/08/22 12:52:04 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/08/22 22:51:09 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
-int main(int ac, char **av)
+#include <string>
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <climits>
+
+class ScalarConverter
 {
-	if (ac != 2)
-	{
-		std::cout << "Use ./scalar \"toConvert\" " << std::endl;
-		return (0);
-	}
-	std::string s(av[1]);
-	ScalarConverter::convert(s);
-}
+	private:
+	
+	public:
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter& rhs);
+		~ScalarConverter();
+		ScalarConverter&	operator=(const ScalarConverter& rhs);
+
+		static void	convert(std::string& toCast);
+		
+};
+
+#endif

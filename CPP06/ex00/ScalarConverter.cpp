@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Convert.cpp                                        :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:45:56 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 13:59:11 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/22 22:52:05 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Convert.hpp"
+#include "ScalarConverter.hpp"
 
-Convert::Convert() {}
+ScalarConverter::ScalarConverter() {}
 
-Convert::Convert(const Convert& rhs)
+ScalarConverter::ScalarConverter(const ScalarConverter& rhs)
 {
 	*this = rhs;
 }
 
-Convert&	Convert::operator=(const Convert& rhs) {}
+ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& rhs)
+{
+    (void)rhs;
+    return (*this);
+}
 
-Convert::~Convert() {}
+ScalarConverter::~ScalarConverter() {}
 
-void	Convert::convert(std::string& toCast)
+void	ScalarConverter::convert(std::string& toCast)
 {
 	std::string special[6] = 
 	{
@@ -32,7 +36,7 @@ void	Convert::convert(std::string& toCast)
 	};
 
 	std::string toChar = "";
-	int			toInt = 0;
+	long long	toInt = 0;
 	float		toFloat = 0;
 	double		toDouble = 0;
 	
@@ -46,7 +50,8 @@ void	Convert::convert(std::string& toCast)
 		return ;
 	}
 	
-	toInt = std::atoi(toCast.c_str());
+	toInt = std::atoll(toCast.c_str());
+    
 	if (toCast[toCast.length() - 1] == 'f')
 	{
 		toFloat = std::atof(toCast.c_str());
@@ -67,15 +72,42 @@ void	Convert::convert(std::string& toCast)
 		}
 	}
 	
-	if (toChar == "" && std::isprint(toInt))
+	if (toChar == "" && toInt < 256 && toInt >= 0)
 	{
-		toChar = "'";
-		toChar += static_cast<char>(toInt);
-		toChar += "'";
+        if (std::isprint(toInt))
+		{
+            toChar = "'";
+            toChar += static_cast<char>(toInt);
+            toChar += "'";            
+        }
 	}
 	else if (toChar == "")
 	{
 		toChar = "Non displayable";
 	}
 	
+    std::cout << "char: " << toChar << std::endl;
+    if (toChar == "impossible" || (toInt < INT_MIN || toInt > INT_MAX))
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << toInt << std::endl;
+    
+    if (toChar == "impossible" && toFloat == 0)
+    {
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+    }
+    else
+    {
+        if (toChar != "impossible" && toFloat - static_cast<int>(toFloat) == 0)
+        {
+            std::cout << "float: " << toFloat << ".0f" << std::endl;
+            std::cout << "double: " << toDouble << ".0" << std::endl;
+        }
+        else
+        {
+            std::cout << "float: " << toFloat << "f" << std::endl;
+            std::cout << "double: " << toDouble << std::endl;
+        }
+    }
 }

@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 12:08:54 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/22 22:51:53 by ael-youb         ###   ########.fr        #
+#    Created: 2023/08/22 22:53:34 by ael-youb          #+#    #+#              #
+#    Updated: 2023/08/22 22:54:02 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= scalar
+NAME	= identify
 
-SRC		= main.cpp ScalarConverter.cpp
+SRC		= main.cpp Base.cpp A.cpp B.cpp C.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++

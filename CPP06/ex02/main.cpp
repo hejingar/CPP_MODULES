@@ -5,20 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 12:08:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 22:51:25 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/08/22 22:53:32 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/08/22 23:49:37 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-int main(int ac, char **av)
+int main()
 {
-	if (ac != 2)
-	{
-		std::cout << "Use ./scalar \"toConvert\" " << std::endl;
-		return (0);
-	}
-	std::string s(av[1]);
-	ScalarConverter::convert(s);
+    srand(time(NULL));
+    Base* rand = generate();
+    Base* ran = generate();
+    Base* ra = generate();
+
+    identify(rand);
+    identify(ran);
+    identify(ra);
 }

@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 12:08:52 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 22:51:25 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/08/22 22:33:15 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/08/22 22:49:05 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int main(int ac, char **av)
+#include <string>
+#include <iostream>
+#include <stdint.h>
+
+struct Data
 {
-	if (ac != 2)
-	{
-		std::cout << "Use ./scalar \"toConvert\" " << std::endl;
-		return (0);
-	}
-	std::string s(av[1]);
-	ScalarConverter::convert(s);
-}
+	std::string s;
+};
+
+class Serializer
+{
+	public:
+		Serializer();
+		Serializer(const Serializer& rhs);
+		~Serializer();
+		Serializer& operator=(const Serializer& rhs);
+
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
+};
+
+#endif
