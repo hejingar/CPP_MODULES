@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:53:32 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/22 23:49:37 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:14:20 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,8 @@ int main()
     identify(rand);
     identify(ran);
     identify(ra);
+
+	delete rand;
+	delete ran;
+	delete ra;
 }
