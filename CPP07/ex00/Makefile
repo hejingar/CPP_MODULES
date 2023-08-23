@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/04 17:47:19 by ael-youb          #+#    #+#              #
-#    Updated: 2023/07/04 18:10:41 by ael-youb         ###   ########.fr        #
+#    Created: 2023/08/23 11:09:12 by ael-youb          #+#    #+#              #
+#    Updated: 2023/08/23 11:17:02 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fixed
+NAME	= functions
 
-SRC		= main.cpp Fixed.cpp
+SRC		= main.cpp FewFunctions.hpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 RM		= rm -rf
 
 GREEN	= \033[32m

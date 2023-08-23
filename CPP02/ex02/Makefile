@@ -15,7 +15,7 @@ NAME	= fixed
 SRC		= main.cpp Fixed.cpp
 OBJS 	= $(SRC:.c=.o)
 
-CC		= clang++
+CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
