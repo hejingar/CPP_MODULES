@@ -1,5 +1,6 @@
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
+#include <cstdlib>
 
 #define MAX_VAL 750
 
@@ -19,7 +20,6 @@ int main(int, char**)
         Array<int> tmp = numbers;
         Array<int> test(tmp);
     }
-
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
