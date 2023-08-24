@@ -6,13 +6,13 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 22:39:38 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/23 22:39:54 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/08/24 17:10:02 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= array
+NAME	= span
 
-SRC		= main.cpp
+SRC		= main.cpp Span.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
