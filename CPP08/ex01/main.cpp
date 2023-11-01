@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:39:34 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/24 18:21:01 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:55:26 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,24 @@ int main()
 		std::cerr << e.what() << '\n';
 	}
 	
-	
+	try {
+        Span ranged = Span(210000);
+        std::vector<int> vector;
+        
+        for (int i = 0; i <= 200000; i++)
+        {
+            vector.push_back(i);
+        }
+        
+        std::vector<int>::iterator s = vector.begin();
+        std::vector<int>::iterator e = vector.begin();
+        std::advance(s, 0);
+        std::advance(e, 200000); 
+        ranged.addRange(s, e);
+        std::cout << ranged.shortestSpan() << std::endl;
+        std::cout << ranged.longestSpan() << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
 	return 0;
 }

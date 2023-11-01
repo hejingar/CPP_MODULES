@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:10:18 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/24 18:18:38 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:38:39 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class Span
 	private:
 		typedef std::vector<int>::iterator ITER;
 		std::vector<int> _v;
-		std::size_t		_s;\
+		std::size_t		_s;
+		Span();
 		
 	public:
-		Span();
 		Span(unsigned int N);
 		Span(const Span& rhs);
 		~Span();
@@ -43,7 +43,7 @@ class Span
 		public:
 			virtual const char * what () const throw()
 			{
-				return "Too small to find Span";
+				return "Not enough elements to find span";
 			}
 	};
 
@@ -51,7 +51,7 @@ class Span
 		public:
 			virtual const char * what () const throw()
 			{
-				return "Too big to add number";
+				return "Can't add any more numbers";
 			}
 	};
 };
