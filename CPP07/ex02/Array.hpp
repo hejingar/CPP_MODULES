@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 13:23:43 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/23 22:22:52 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:02:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ class Array
 	private:
 		T*				tab;
 		unsigned int	sizeTab;
-	public:
 		Array()
         {
             sizeTab = 0;
 	        tab = new T[0];
         }
-        
+	public:
 		Array(unsigned int n)
         {
             sizeTab = n;
@@ -46,7 +45,7 @@ class Array
             this->tab = new T[rhs.size()];
             for(unsigned int i = 0; i < rhs.size(); i++)
             {
-                this->tab[i] = rhs[i];
+                this->tab[i] = rhs[i]; //good si object bicoz appelle surcharge de l'operateur = 
             }
         }
 		~Array()
@@ -56,7 +55,7 @@ class Array
 
 		Array&			operator=(const Array& rhs)
         {
-            delete [] tab;
+            delete [] tab; //very deep copy
             sizeTab = rhs.size();
             tab = new T[rhs.size()];
             for (unsigned int i = 0; i < rhs.size(); i++)
@@ -66,13 +65,14 @@ class Array
             return (*this);
         }
         
+        //unsigned int, if a negative number is sent it will automatically overflow
 		T&				operator[](unsigned int index)
         {
-            if (index >= this->sizeTab)
+            if (index >= this->sizeTab) 
                 throw std::out_of_range("Out of range exception");
             return (this->tab[index]);
         }
-        
+
 		const T&		operator[](unsigned int index) const
         {
             if (index >= this->sizeTab)

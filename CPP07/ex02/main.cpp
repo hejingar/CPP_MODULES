@@ -4,22 +4,74 @@
 
 #define MAX_VAL 750
 
-int main(int, char**)
+int main(void)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
-        const int value = rand();
+        const int value = rand() % 10;
         numbers[i] = value;
         mirror[i] = value;
     }
-    //SCOPE
+
+    //Test max value Array vs int[]
+    // for (int i = 0; i < MAX_VAL; i++)
+    // {
+    //     std::cout << "Numbers:"<< numbers[i] << std::endl;
+    //     std::cout << "Mirror:"<< mirror[i] << std::endl;
+    // }
+
+    std::cout << "\nTest Copie Profonde ===================================== \n" << std::endl;
+    //SCOPE TEST COPIE PROFONDE
     {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
+        std::cout << "Testons d'abord la surcharge de l'operateur =" << std::endl;
+        Array<int> toCopy(10);
+        for (unsigned int i = 0; i < toCopy.size(); i++)
+        {
+            toCopy[i] = i;
+        }
+        Array<int> copy = toCopy;
+        std::cout << "Maintenant, affichons les deux Arrays" << std::endl;
+        for (unsigned int i = 0; i < toCopy.size(); i++)
+        {
+            std::cout << "toCopy[" << i << "]: " << toCopy[i] << std::endl;
+            std::cout << "copy[" << i << "]: " << copy[i] << std::endl;
+        }
+        std::cout << "Modifions copy : cela ne devrait pas modifier toCopy!" << std::endl;
+        for (unsigned int i = 0; i < toCopy.size(); i++)
+        {
+            copy[i] = 10 - i;
+        }
+        std::cout << "copy modifie, affichons les deux Array a nouveau" << std::endl;
+        for (unsigned int i = 0; i < toCopy.size(); i++)
+        {
+            std::cout << "toCopy[" << i << "]: " << toCopy[i] << std::endl;
+            std::cout << "copy[" << i << "]: " << copy[i] << std::endl;
+        }
+
+        std::cout << "Maintenant, testons la copie par constructeur" << std::endl;
+        Array<int> copy2(copy);
+        for (unsigned int i = 0; i < copy.size(); i++)
+        {
+            std::cout << "copy[" << i << "]: " << copy[i] << std::endl;
+            std::cout << "copy2[" << i << "]: " << copy2[i] << std::endl;
+        }
+        std::cout << "Modifions copy2 : cela ne devrait pas modifier copy!" << std::endl;
+        for (unsigned int i = 0; i < toCopy.size(); i++)
+        {
+            copy2[i] = i;
+        }
+        std::cout << "copy2 modifie, affichons les deux Array a nouveau" << std::endl;
+        for (unsigned int i = 0; i < copy.size(); i++)
+        {
+            std::cout << "copy[" << i << "]: " << copy[i] << std::endl;
+            std::cout << "copy2[" << i << "]: " << copy2[i] << std::endl;
+        }
     }
+
+
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])
@@ -28,6 +80,8 @@ int main(int, char**)
             return 1;
         }
     }
+    
+    std::cout << "Quelques tests de l'index out of bound" << std::endl;
     try
     {
         numbers[-2] = 0;
@@ -45,10 +99,6 @@ int main(int, char**)
         std::cerr << e.what() << '\n';
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
     delete [] mirror;//
     return 0;
 }

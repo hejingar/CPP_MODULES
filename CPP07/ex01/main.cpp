@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:19:03 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/23 11:25:28 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:47:44 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int main(void)
 {
-    int tab[] = {999, 998, 997, 996};
+    int tab[] = {1, 2, 33, 44};
 
-    ::iter(tab, 4, printThis);
+    //int *c = 0;
+
+    ::iter(tab, 4, print);
 
     std::string lol[] = 
     {
@@ -25,7 +27,7 @@ int main(void)
         "hihi"
     };
     
-    ::iter(lol, 3, printThis);
+    ::iter(lol, 3, print);
     
     return (0);
 }
