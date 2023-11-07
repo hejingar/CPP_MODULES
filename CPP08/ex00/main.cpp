@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 22:30:08 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/01 14:36:22 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:00:25 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ int main(void)
     
     try {
         bol = easyfind(b, 2);
-        std::cout << "iterator: " << *lol << std::endl;
+        std::cout << "iterator: " << *bol << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Can't find what you're looking for in CHAR VECTOR OMG" << std::endl;
+    }
+	try {
+        bol = easyfind(b, 'c');
+        std::cout << "iterator: " << *bol << std::endl;
     } catch (const std::exception& e) {
         std::cout << "Can't find what you're looking for in CHAR VECTOR OMG" << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:03:04 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/01 15:08:16 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:57:55 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main()
         mstack.push(3);
         mstack.push(5);
         mstack.push(737);
-        //[...]
         mstack.push(0);
         MutantStack<int>::iterator it = mstack.begin();
         MutantStack<int>::iterator ite = mstack.end();
