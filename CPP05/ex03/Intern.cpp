@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:54:24 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/21 17:38:18 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:49:06 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,40 +30,49 @@ Intern::~Intern() {}
 
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	std::string formuu[] = 
+	try
 	{
-		"robotomy request",
-		"presidential pardon",
-		"shrubbery creation"
-	};
-	AForm* forms[] = 
-	{
-		new RobotomyRequestForm(target),
-		new PresidentialPardonForm(target),
-		new ShrubberyCreationForm(target)
-	};
-
-	for (int i = 0; i < 3; i++)
-	{
-		if (name == formuu[i])
+		std::string formuu[] = 
 		{
-			std::cout << "Intern creates " << name << std::endl;
-			for (int i = 0; i < 3; i++)
+			"robotomy request",
+			"presidential pardon",
+			"shrubbery creation"
+		};
+		AForm* forms[] = 
+		{
+			new RobotomyRequestForm(target),
+			new PresidentialPardonForm(target),
+			new ShrubberyCreationForm(target)
+		};
+
+		for (int i = 0; i < 3; i++)
+		{
+			if (name == formuu[i])
 			{
-				if (name != formuu[i])
+				std::cout << "Intern creates " << name << std::endl;
+				for (int i = 0; i < 3; i++)
 				{
-					AForm* lol = forms[i];
-					delete lol;
+					if (name != formuu[i])
+					{
+						AForm* lol = forms[i];
+						delete lol;
+					}
 				}
+				return (forms[i]);
 			}
-			return (forms[i]);
 		}
+		std::cout << "Intern couldn't create " << name << std::endl;
+		for (int i = 0; i < 3; i++)
+		{
+			AForm* lol = forms[i];
+			delete lol;
+		}
+		return NULL;
 	}
-	std::cout << "Intern couldn't create " << name << std::endl;
-	for (int i = 0; i < 3; i++)
+	catch(const std::bad_alloc& e)
 	{
-		AForm* lol = forms[i];
-		delete lol;
+		std::cerr << e.what() << '\n';
+		return NULL;
 	}
 	return NULL;
 }

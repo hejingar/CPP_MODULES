@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:31:37 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/14 15:14:09 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:54:12 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 int main(void)
 {
-	Bureaucrat* bur = new Bureaucrat("salut", 1);
+	Bureaucrat bur = Bureaucrat("salut", 1);
 	
-	std::cout << *bur;
-	delete bur;
+	std::cout << bur;
 
 	try
 	{
@@ -30,4 +29,5 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	return (0);
 }

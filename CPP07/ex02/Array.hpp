@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 13:23:43 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/01 14:02:54 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:48:01 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <exception>
+#include <cstdlib>
 
 template<typename T>
 

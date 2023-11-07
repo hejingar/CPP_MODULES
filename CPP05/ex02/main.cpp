@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:31:37 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/08/18 19:56:34 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/08/31 19:53:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,27 @@ int main(void)
      std::cout << "\n-------------------CEO----------------------------------" << std::endl;
     try
     {
-        Bureaucrat* bur = new Bureaucrat("Sophie Vigier", 1);
+        Bureaucrat bur = Bureaucrat("Sophie Vigier", 1);
 	    ShrubberyCreationForm form("42Paris");
 	
-	    std::cout << *bur;
+	    std::cout << bur;
         std::cout << form;
         
-        bur->signForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
+        bur.signForm(form);
+        bur.executeForm(form);
+        bur.executeForm(form);
+        bur.executeForm(form);
 
         RobotomyRequestForm dead("ael-youb");
         std::cout << dead;
         
-        bur->signForm(dead);
-        bur->executeForm(dead);
+        bur.signForm(dead);
+        bur.executeForm(dead);
         
         PresidentialPardonForm mercy("ael-youb");
         std::cout << mercy;
-        bur->signForm(mercy);
-        bur->executeForm(mercy);
-        delete bur;
+        bur.signForm(mercy);
+        bur.executeForm(mercy);
     }
     catch(const std::exception& e)
     {
@@ -52,36 +51,33 @@ int main(void)
     std::cout << "\n-------------------USELESS INTERN-------------------------" << std::endl;
     try
     {
-        Bureaucrat* bur = new Bureaucrat("Useless Intern", 150);
+        Bureaucrat bur = Bureaucrat("Useless Intern", 150);
 	    ShrubberyCreationForm form("Home");
 	
-	    std::cout << *bur;
+	    std::cout << bur;
         std::cout << form;
         
-        bur->signForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
-        bur->executeForm(form);
+        bur.signForm(form);
+        bur.executeForm(form);
+        bur.executeForm(form);
+        bur.executeForm(form);
 
         RobotomyRequestForm dead("ael-youb");
         std::cout << dead;
 
-        bur->signForm(dead);
-        bur->executeForm(dead);
+        bur.signForm(dead);
+        bur.executeForm(dead);
         
         PresidentialPardonForm mercy("ael-youb");
         std::cout << mercy;
-        bur->signForm(mercy);
-        bur->executeForm(mercy);
+        bur.signForm(mercy);
+        bur.executeForm(mercy);
         
         std::cout << std::endl;
-        
-        delete bur;
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
-    
-	
+    return (0);
 }

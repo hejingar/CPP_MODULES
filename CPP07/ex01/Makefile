@@ -6,13 +6,13 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 11:18:42 by ael-youb          #+#    #+#              #
-#    Updated: 2023/08/23 11:19:01 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/11/07 10:52:48 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= iter
 
-SRC		= main.cpp Iter.hpp
+SRC		= main.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
