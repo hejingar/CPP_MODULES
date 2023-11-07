@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:24:17 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/07 13:16:56 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:54:01 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ BitcoinExchange::BitcoinExchange()
 	databaseStream.open(database.c_str());
 	if (databaseStream.is_open())
 	{
-		
+		populateDataExchange(databaseStream);
 	}
 	else {
 		std::cerr << "Couldn't open the Database, aborting everything, big btc crash" << std::endl;
@@ -41,14 +41,66 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs)
 
 BitcoinExchange::~BitcoinExchange() {}
 
+void	BitcoinExchange::populateDataExchange(std::ifstream dataStream)
+{
+	std::string buffer;
+	while(getline(dataStream, buffer))
+	{
+		if (checkFormatDatabase(buffer))
+		{
+			std::size_t i = buffer.find(",");
+			std::string date = buffer.substr(i);
+			std::string value = buffer.substr(i, buffer.length() - i);
+			dataExchange.insert({date, std::atof(value.c_str())});
+		}
+		else
+			std::cerr << buffer << " will not be printed : Parsing error" << std::endl;	
+	}
+}
+
+void	BitcoinExchange::populateDataInput(std::ifstream dataStream)
+{
+	std::string buffer;
+	while(getline(dataStream, buffer))
+	{
+		if (checkFormatInput(buffer))
+		{
+			std::size_t i = buffer.find(",");
+			std::string date = buffer.substr(i);
+			std::string value = buffer.substr(i, buffer.length() - i);
+			dataInput.insert({date, std::atof(value.c_str())});
+		}
+		else
+			std::cerr << buffer << " will not be printed : Parsing error" << std::endl;	
+	}
+}
 
 int		BitcoinExchange::checkFormatInput(std::string line)
 {
 	std::size_t i = line.find("|");
-	if (i != std::string::npos)
-	{
-		
-	}
+	if (i == std::string::npos)
+		return (0);
+	std::string date = line.substr(i);
+	std::string value = line.substr(i, line.length() - i);
+	if (!checkFormatDate(date))
+		return (0);
+	if (value.find_first_not_of("0123456789.") != std::string::npos)
+		return (0);
+	return (1);
+}
+
+int		BitcoinExchange::checkFormatDatabase(std::string line)
+{
+	std::size_t i = line.find(",");
+	if (i == std::string::npos)
+		return (0);
+	std::string date = line.substr(i);
+	std::string value = line.substr(i, line.length() - i);
+	if (!checkFormatDate(date))
+		return (0);
+	if (value.find_first_not_of("0123456789.") != std::string::npos)
+		return (0);
+	return (1);
 }
 
 int		BitcoinExchange::checkFormatDate(std::string date)
@@ -63,7 +115,7 @@ int		BitcoinExchange::checkFormatDate(std::string date)
 	if (year.find_first_not_of("0123456789") != std::string::npos)
 		return (0);
 	if (month.find_first_not_of("0123456789") != std::string::npos)
-		return (0);
+		return (0);day
 	if (day.find_first_not_of("0123456789") != std::string::npos)
 		return (0);
 	
