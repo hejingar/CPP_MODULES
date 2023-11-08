@@ -6,13 +6,13 @@
 #    By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 11:02:45 by ael-youb          #+#    #+#              #
-#    Updated: 2023/11/07 11:12:37 by ael-youb         ###   ########.fr        #
+#    Updated: 2023/11/08 07:28:29 by ael-youb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= btc
 
-SRC		= main.cpp
+SRC		= main.cpp BitcoinExchange.cpp
 OBJS 	= $(SRC:.c=.o)
 
 CC		= c++
