@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:24:17 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 07:57:55 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/08 08:01:40 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ int		BitcoinExchange::checkFormatDate(std::string date)
 	
 	int monthInt = std::atoi(month.c_str());
 	int yearInt = std::atoi(year.c_str());
-	if (std::atoi(year.c_str()) < 2009 || std::atoi(year.c_str()) > 2023)
+	if (std::atoi(year.c_str()) < 2009)
 		return (0);
 	if (monthInt < 1 || monthInt > 12)
 		return (0);
