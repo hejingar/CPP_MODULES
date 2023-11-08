@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:57:45 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 10:37:27 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:02:33 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ PmergeMe::PmergeMe(int ac, char ** av)
     clock_t start = clock();
     lis = mergeInsertSortList(lis);
     clock_t end = clock();
-    double time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-    //double timeDeque = mergeInsertSortDeque();
+    double timeList = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
     std::cout << "After: ";
     print(lis);
-    ///std::cout << "Time to process a range of " << deq.size() << " elements with std::deque container: " << timeDeque << " us" << std::endl;
-    std::cout << "Time to process a range of " << lis.size() << " elements with std::list container: " << time << " us" << std::endl;
+    start = clock();
+    deq = mergeInsertSortDeque(deq);
+    end = clock();
+    double timeDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque container: " << timeDeque << " us" << std::endl;
+    std::cout << "Time to process a range of " << lis.size() << " elements with std::list container: " << timeList << " us" << std::endl;
 }
 
 PmergeMe::PmergeMe(const PmergeMe& rhs)
@@ -155,4 +158,60 @@ std::list<unsigned int> PmergeMe::mergeInsertSortList(std::list<unsigned int> li
     right = mergeInsertSortList(right);
 
     return mergeLists(left, right);
+}
+
+
+std::deque<unsigned int> PmergeMe::mergeDeques(std::deque<unsigned int>& left, std::deque<unsigned int>& right)
+{
+    std::deque<unsigned int> result;
+
+    while (!left.empty() && !right.empty())
+	{
+        if (left.front() <= right.front())
+		{
+            result.push_back(left.front());
+            left.erase(left.begin());
+        }
+		else
+		{
+            result.push_back(right.front());
+            right.erase(right.begin());
+        }
+    }
+
+    while (!left.empty())
+	{
+        result.push_back(left.front());
+        left.erase(left.begin());
+    }
+
+    while (!right.empty())
+	{
+        result.push_back(right.front());
+        right.erase(right.begin());
+    }
+    return result;
+}
+
+std::deque<unsigned int> PmergeMe::mergeInsertSortDeque(std::deque<unsigned int> deq)
+{
+
+    if (deq.size() <= 1) {
+        return deq;
+    }
+    
+    int mid = deq.size() / 2;
+	std::deque<unsigned int> left;
+	std::deque<unsigned int> right;
+
+    for (int i = 0; i < mid; i++) {
+        left.push_back(deq.front());
+        deq.pop_front();
+    }
+    right = deq;
+
+    left = mergeInsertSortDeque(left);
+    right = mergeInsertSortDeque(right);
+
+    return mergeDeques(left, right);
 }
