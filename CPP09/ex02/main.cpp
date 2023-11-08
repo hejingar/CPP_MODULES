@@ -5,23 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 08:04:28 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 08:43:28 by ael-youb         ###   ########.fr       */
+/*   Created: 2023/11/08 08:42:15 by ael-youb          #+#    #+#             */
+/*   Updated: 2023/11/08 08:43:18 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PmergeMe.hpp"
 
 int main(int ac, char **av)
 {
-    if (ac != 2)
+    if (ac <= 1)
     {
-        std::cout << "./RPN \"votre expression a calculer\"" << std::endl;
+        std::cerr << "Error: Not enough numbers." << std::endl;
         return (1);
     }
-    
-    std::string expression = av[1];
-    RPN rpn;
-    rpn.parse(expression);
+
+    PmergeMe pmm(ac, av);
     return (0);
 }
