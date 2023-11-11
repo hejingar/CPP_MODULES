@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:57:45 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 17:02:33 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:35:11 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,6 @@ void PmergeMe::print(const T& list)
     std::cout << std::endl;
 }
 
-// double PmergeMe::mergeInsertSortDeque()
-// {
-//     std::deque<int>::iterator it1, it2;
-    
-//     clock_t start = clock();
-//     for (it1 = deq.begin() + 1; it1 != deq.end(); ++it1)
-//     {
-//         int temp = *it1;
-//         it2 = it1;
-//         while (it2 != deq.begin() && *(--it2) > temp)
-//         {
-//             *it2 = *(it2--);
-//             std::advance(it2, -1);
-//         }
-//         *it2 = temp;
-//     }
-//     clock_t end = clock();
-//     double time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-//     return (time);
-// }
-
 std::list<unsigned int> PmergeMe::mergeLists(std::list<unsigned int>& left, std::list<unsigned int>& right)
 {
     std::list<unsigned int> result;
@@ -122,7 +101,7 @@ std::list<unsigned int> PmergeMe::mergeLists(std::list<unsigned int>& left, std:
             right.erase(right.begin());
         }
     }
-
+	
     while (!left.empty())
 	{
         result.push_back(left.front());
@@ -159,7 +138,6 @@ std::list<unsigned int> PmergeMe::mergeInsertSortList(std::list<unsigned int> li
 
     return mergeLists(left, right);
 }
-
 
 std::deque<unsigned int> PmergeMe::mergeDeques(std::deque<unsigned int>& left, std::deque<unsigned int>& right)
 {

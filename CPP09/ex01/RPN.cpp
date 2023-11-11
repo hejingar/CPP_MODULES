@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:10:39 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 08:30:07 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:16:31 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ RPN::~RPN() {}
 void    RPN::parse(std::string expression)
 {
     char c;
-    int operandCount = 0;
     for(size_t i = 0; i < expression.length(); i++)
     {
         c = expression[i];
@@ -40,12 +39,6 @@ void    RPN::parse(std::string expression)
         }
         else if (isdigit(c))
         {
-            operandCount++;
-            if (operandCount >= 3)
-            {
-                std::cerr << "Too many numbers for 1 operand, aborting..." << std::endl;
-                return ;
-            }
             int number = c - '0';
             exp.push(number);
         }
@@ -56,7 +49,6 @@ void    RPN::parse(std::string expression)
             double b = exp.top();
             exp.pop();
             exp.push(a + b);
-            operandCount = 1;
         }
         else if (c == '-' && exp.size() >= 2)
         {
@@ -66,7 +58,6 @@ void    RPN::parse(std::string expression)
             exp.pop();
             //oulala don't switch order here
             exp.push(b - a);
-            operandCount = 1;
         }
         else if (c == '*' && exp.size() >= 2)
         {
@@ -75,8 +66,8 @@ void    RPN::parse(std::string expression)
             double b = exp.top();
             exp.pop();
             exp.push(a * b);
-            operandCount = 1;
         }
+		// division par 0 geree automatiquement tend vers +inf
         else if (c == '/' && exp.size() >= 2)
         {
             double a = exp.top();
@@ -84,7 +75,6 @@ void    RPN::parse(std::string expression)
             double b = exp.top();
             exp.pop();
             exp.push(b / a);
-            operandCount = 1;
         }
         else
         {

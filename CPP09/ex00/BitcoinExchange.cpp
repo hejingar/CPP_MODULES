@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:24:17 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 08:01:40 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:15:13 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ BitcoinExchange::BitcoinExchange()
 	std::ifstream databaseStream;
     int firstline = 0;
 	databaseStream.open(database.c_str());
+	abort = 0;
 	if (databaseStream.is_open())
 	{
 		std::string buffer;
@@ -58,9 +59,15 @@ BitcoinExchange::BitcoinExchange()
                 dataExchange.insert(std::make_pair(date, std::atof(value.c_str())));
             }
             else
-                std::cerr << buffer << " will not be printed : Parsing error" << std::endl;	
+			{
+                std::cerr << "Wrong data file: Parsing error. Aborting everything." << std::endl;
+				databaseStream.close();
+				abort = 1;
+				break ;
+			}
         }
-        databaseStream.close();
+		if (abort == 0)
+			databaseStream.close();
     }
 	else {
 		std::cerr << "Couldn't open the Database, aborting everything, big btc crash" << std::endl;
@@ -90,33 +97,34 @@ void    BitcoinExchange::readInputFile(std::string input)
         std::string buffer;
         while(getline(fileInput, buffer))
         {
-            if (firstline == 0)
-            {
-                firstline++;
-                continue ;
-            }
-            if (checkFormatInput(buffer))
-            {
-                std::size_t i = buffer.find("|");
-                std::string date = buffer.substr(0, i);
-                date = trim(date);
-                std::string valueStr = buffer.substr(i + 1, buffer.length() - i);
-                valueStr = trim(valueStr);
-                float value = std::atof(valueStr.c_str());
-                if (value > 1000.0)
-                    std::cerr << "Error: Too large a number." << std::endl;
-                else if (value < 0)
-                    std::cerr << "Error : Not a positive number." << std::endl;
-                else
-                {
-                    std::map<std::string, float>::iterator it = this->dataExchange.upper_bound(date);
-                    std::pair<std::string, float> p = *(--it);
-                    // std::cout << "Pair found : " << p.first << ":" << p.second << std::endl;
-                    std::cout << date << " => " << valueStr << " = " << value * p.second << std::endl;
-                }
-            }
-            else
-                std::cerr << "Error : bad input => " << buffer << std::endl;	
+			if (firstline == 0)
+			{
+				firstline++;
+				continue ;
+			}
+			if (checkFormatInput(buffer))
+			{
+				std::size_t i = buffer.find("|");
+				std::string date = buffer.substr(0, i);
+				date = trim(date);
+				std::string valueStr = buffer.substr(i + 1, buffer.length() - i);
+				valueStr = trim(valueStr);
+				float value = std::atof(valueStr.c_str());
+				if (value > 1000.0)
+					std::cerr << "Error: Too large a number." << std::endl;
+				else if (value < 0)
+					std::cerr << "Error : Not a positive number." << std::endl;
+				else
+				{
+					std::map<std::string, float>::iterator it = this->dataExchange.upper_bound(date);
+					std::pair<std::string, float> p = *(--it);
+					// std::cout << "Pair found : " << p.first << ":" << p.second << std::endl;
+					std::cout << date << " => " << valueStr << " = " << value * p.second << std::endl;
+					// << std::fixed << std::setprecision(5)
+				}
+			}
+			else
+				std::cerr << "Error : bad input => " << buffer << std::endl;
         }
         fileInput.close();
     }
@@ -181,6 +189,11 @@ int		BitcoinExchange::checkFormatDate(std::string date)
 	if (monthInt < 1 || monthInt > 12)
 		return (0);
 
+	if (monthInt == 1 && yearInt == 2009)
+	{
+		if (std::atoi(day.c_str()) == 1)
+			return (0);
+	}
 	//clean tout ca
 	if (monthInt == 1 || monthInt == 3 || monthInt == 5 || monthInt == 7 || monthInt == 8 || monthInt == 10 || monthInt == 12)
 	{
@@ -204,4 +217,8 @@ int		BitcoinExchange::checkFormatDate(std::string date)
 			return (0);
 	}
 	return (1);
+}
+
+int BitcoinExchange::getAbort(){
+	return (abort);
 }
