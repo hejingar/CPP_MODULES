@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:10:39 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/11 14:16:31 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/12 20:03:54 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void    RPN::parse(std::string expression)
         }
         else
         {
-            std::cerr << "Wrong operand, aborting..." << std::endl;
+            std::cerr << "Error with your input" << std::endl;
             return ;
         }
     }
@@ -89,6 +89,6 @@ void    RPN::parse(std::string expression)
     }
     else
     {
-        std::cout << "Can't calculate the output" << std::endl;
+        std::cout << "Error with your input" << std::endl;
     }
 }
