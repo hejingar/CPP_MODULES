@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:43:35 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/08 17:00:36 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/13 09:22:31 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class PmergeMe
     private:
         std::deque<unsigned int> deq;
         std::list<unsigned int> lis;
+		int						abort;
     public:
         PmergeMe(int ac, char **av);
         PmergeMe(const PmergeMe& rhs);
@@ -40,7 +41,8 @@ class PmergeMe
         void    populateDeque(int ac, char **av);
         void    populateList(int ac, char **av);
         //manage dupes?
-
+		void    printAv(char **av);
+		int		getAbort();
         //use this only for display, implement the mergesort for each container as advised in the subject
         template<typename T>
         void    print(const T& list);

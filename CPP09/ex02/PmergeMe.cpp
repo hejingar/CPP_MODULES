@@ -6,7 +6,7 @@
 /*   By: ael-youb <ael-youb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 08:57:45 by ael-youb          #+#    #+#             */
-/*   Updated: 2023/11/11 11:35:11 by ael-youb         ###   ########.fr       */
+/*   Updated: 2023/11/13 09:24:12 by ael-youb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 PmergeMe::PmergeMe(int ac, char ** av)
 {
-    populateDeque(ac, av);
-    populateList(ac, av);
-    std::cout << "Before: ";
-    print(lis);
+	abort = 0;
     clock_t start = clock();
-    lis = mergeInsertSortList(lis);
-    clock_t end = clock();
-    double timeList = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-    std::cout << "After: ";
-    print(lis);
-    start = clock();
-    deq = mergeInsertSortDeque(deq);
-    end = clock();
-    double timeDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque container: " << timeDeque << " us" << std::endl;
-    std::cout << "Time to process a range of " << lis.size() << " elements with std::list container: " << timeList << " us" << std::endl;
+    populateList(ac, av);
+	if (!abort)
+	{
+		lis = mergeInsertSortList(lis);
+		clock_t end = clock();
+		double timeList = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+		std::cout << "Before: ";
+		printAv(av);
+		std::cout << "After: ";
+		print(lis);
+		start = clock();
+		populateDeque(ac, av);
+		deq = mergeInsertSortDeque(deq);
+		end = clock();
+		double timeDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+		std::cout << "Time to process a range of " << deq.size() << " elements with std::deque container: " << timeDeque << " us" << std::endl;
+		std::cout << "Time to process a range of " << lis.size() << " elements with std::list container: " << timeList << " us" << std::endl;		
+	}
 }
 
 PmergeMe::PmergeMe(const PmergeMe& rhs)
@@ -53,7 +57,8 @@ void    PmergeMe::populateDeque(int ac, char **av)
         if (value <= 0)
         {
             std::cerr << "Error: Invalid input value \"" << av[i] << "\"." << std::endl;
-			exit(1);
+			abort = 1;
+			return ;
         }
         deq.push_back(value);
     }
@@ -67,10 +72,20 @@ void    PmergeMe::populateList(int ac, char **av)
         if (value <= 0)
         {
             std::cerr << "Error: Invalid input value \"" << av[i] << "\"." << std::endl;
-			exit(1);
+			abort = 1;
+			return ;
         }
         lis.push_back(value);
     }
+}
+
+void PmergeMe::printAv(char **av)
+{
+    for (int i = 1; av[i]; i++)
+    {
+        std::cout << atoi(av[i]) << " ";
+    }
+    std::cout << std::endl;
 }
 
 template <typename T>
